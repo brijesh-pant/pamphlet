@@ -1,6 +1,6 @@
 const logger = require('../lib/logger')
 
-const host = process.env.host || 'http://localhost:'
+const host = process.env.HOST || 'http://localhost:'
 const port = process.env.PORT || 3000
 
 logger.info('Starting server...')
