@@ -2,6 +2,10 @@
 
 	body {
 		padding-top: 3.5em;
+
+		@media screen and (max-width: 480px) {
+			padding-top: 44px;
+		}
 	}
 
 	#header {
