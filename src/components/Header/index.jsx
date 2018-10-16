@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 
 export default class Header extends Component {
+  handleLogout = () => {
+    const hasToken = localStorage.getItem('app_token')
+    if (hasToken) {
+      localStorage.removeItem('app_token')
+      window.location.reload()
+    }
+  };
+
   render () {
     return (
       <header id='header'>
@@ -24,6 +32,13 @@ export default class Header extends Component {
             <li>
               <a href='#'>Adipiscing</a>
             </li>
+            {localStorage.getItem('app_token') ? (
+              <li>
+                <a href='#' onClick={this.handleLogout}>
+                  Logout
+                </a>
+              </li>
+            ) : null}
           </ul>
         </nav>
         <nav className='main'>

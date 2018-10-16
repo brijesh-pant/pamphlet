@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import apiRequest from '../../../utils/apiRequest'
 
@@ -29,7 +30,13 @@ export default class LoginView extends Component {
       url: 'api/auth',
       data
     }).then(response => {
-      console.log('resonse', response)
+      const {
+        data: {
+          user: { token }
+        }
+      } = response
+      localStorage.setItem('app_token', token)
+      this.props.router.push('/')
     })
   };
 
@@ -66,4 +73,8 @@ export default class LoginView extends Component {
       </div>
     )
   }
+}
+
+LoginView.propTypes = {
+  router: PropTypes.object
 }
